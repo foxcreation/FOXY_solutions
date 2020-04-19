@@ -1,0 +1,20 @@
+name: Deploy_FTP
+on:
+  push:
+    branches: [ master ]
+jobs:
+  FTP-Deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Deploy delta to FTP
+      uses: SamKirkland/FTP-Deploy-Action@3.0.0
+      with:
+        ftp-server: ${{ secrets.FTP_HOST }}
+        ftp-username: ${{ secrets.FTP_USERNAME }}
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        git-ftp-args: --dry-run # start with mocking the events;
+        # local-dir: localdir
+        
