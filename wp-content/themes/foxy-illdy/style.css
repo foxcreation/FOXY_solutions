@@ -13,6 +13,15 @@
 	--primary-color:	#f15d22;
 }
 
+a, a:hover, a:focus{
+    color:              var( --primary-color ) !important;
+    text-decoration:    none !important;
+}
+
+a:hover, a:focus{
+    font-weight:        bold;
+}
+
 .widget_postmeta_widget .fa{
 	color: var( --primary-color ) !important;
     margin: 0.7em;
