@@ -1,2 +1,3 @@
-# FOXY_solutions
-Wordpress blog
+# FOXY Solutions
+## Wordpress blog
+

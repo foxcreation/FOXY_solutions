@@ -2,12 +2,14 @@
 .idea/
 
 # Ignore WP standard folders to prevent overrides after online updates
-wp-admin/
-wp-includes/
+wp-admin/*
+wp-includes/*
 wp-content/*
 
 # Except the overrides we're interested in
-!wp-content/themes/foxy-illdy
+!wp-content/themes
+wp-content/themes/*
+!wp-content/themes/*illdy
 
 # Ignore WP standard files
 /wp-*.php
