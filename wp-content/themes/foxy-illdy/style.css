@@ -9,3 +9,12 @@
  Tags:         FOXY, Illdy, Blog
  Text Domain:  foxy-illdy
 */
+*{
+	--primary-color:	#f15d22;
+}
+
+.widget_postmeta_widget .fa{
+	color: var( --primary-color ) !important;
+    margin: 0.7em;
+    margin-left: 0;
+}
