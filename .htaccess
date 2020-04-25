@@ -1,5 +1,11 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
+	# [L] - Apache stop processing, [NC] - Non-CaseSentive, [QSA] - Query String Append
+
+	# Lab subdomain, redirect to Salesforce Site
+	RewriteCond %{HTTP_HOST} ^lab.foxy-solutions.com$ [NC]
+    RewriteRule ^(.*)$ https://foxcreation-developer-edition.eu15.force.com/reiniersLab/s/%{REQUEST_URI} [NC,L,QSA]
+
 
 	# Wordpress dynamically generated redirects
 	RewriteBase /
