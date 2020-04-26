@@ -3,12 +3,12 @@
 	# [L] - Last, stop processing, [NC] - No Case (case insensitive), [QSA] - Query String Append
 
 	# Lab subdomain, redirect to Salesforce Community
-	RewriteCond %{HTTP_HOST} ^lab.foxy-solutions.com [NC]
-    RewriteRule ^(.*)$ https://foxcreation-developer-edition.eu15.force.com/reiniersLab/s$1 [NC,L,QSA]
+	RewriteCond %{HTTP_HOST} ^lab\.foxy-solutions\.com$ [NC]
+	RewriteRule ^(.*)$ https://foxcreation-developer-edition.eu15.force.com/reiniersLab/s%{REQUEST_URI} [NC,L,QSA]
 
-	# Github subdomain, redirect to Salesforce Site
-	RewriteCond %{HTTP_HOST} ^git.foxy-solutions.com [NC]
-    RewriteRule ^(.*)$ https://github.com/foxcreation/$1 [NC,L,QSA]
+	# Github subdomain, redirect to Github
+	RewriteCond %{HTTP_HOST} ^git\.foxy-solutions\.com$ [NC]
+	RewriteRule ^(.*)$ https://github.com/foxcreation%{REQUEST_URI} [NC,L,QSA]
 
 	# Wordpress dynamically generated redirects
 	RewriteBase /
