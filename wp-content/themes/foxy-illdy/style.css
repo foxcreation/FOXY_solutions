@@ -11,14 +11,16 @@
 */
 *{
 	--primary-color:	#f15d22;
+	--secondary-color:   #1e73be;
 }
 
-a, a:hover, a:focus{
-    color:              var( --primary-color ) !important;
+a{
+    color:              var( --primary-color );
     text-decoration:    none !important;
 }
 
 a:hover, a:focus{
+    color:              var( --secondary-color ) !important;
     font-weight:        bold;
 }
 
