@@ -140,8 +140,8 @@ ol li::before{
 	display:            initial;
 }
 
-.blog-post-meta div {
-    margin-left:        2em;
+.widget.widget_recent_entries ul li{
+    margin-bottom:      0;
 }
 
 /**
@@ -168,6 +168,17 @@ ol li::before{
     padding:            0 30px; /* make sure to align with rest of archive-post content */
 }
 
+/**
+ * Archive blog-post layout
+ */
+@media ( max-width: 600px ){
+    #latest-news .section-content .post .post-title,
+    #latest-news .section-content .post .post-entry,
+    #latest-news .section-content .post .post-button,
+    .archive-post .widget_postmeta_widget{
+        padding:        0 1rem;
+    }
+}
 
 /**
  * Footer styling
