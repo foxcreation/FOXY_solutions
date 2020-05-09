@@ -140,10 +140,13 @@ ol li::before{
 	display:            initial;
 }
 
-.blog-post-meta div {
-    margin-left:        2em;
+.widget.widget_recent_entries ul li{
+    margin-bottom:      0;
 }
 
+/**
+ * Blog Post Meta Custom widget styling
+ */
 .blog-post-meta div .fa {
     margin-left:        -2em;
     margin-right:       1em;
@@ -152,7 +155,29 @@ ol li::before{
 .widget_postmeta_widget .fa{
 	color:              var( --primary-color ) !important;
     margin:             0.7em;
+}
+
+/** Sidebar usage */
+#sidebar .widget_postmeta_widget .fa{
     margin-left:        0;
+}
+
+/** Usage on Archive pages */
+.archive-post .widget_postmeta_widget{
+    font-size:          80%;
+    padding:            0 30px; /* make sure to align with rest of archive-post content */
+}
+
+/**
+ * Archive blog-post layout
+ */
+@media ( max-width: 600px ){
+    #latest-news .section-content .post .post-title,
+    #latest-news .section-content .post .post-entry,
+    #latest-news .section-content .post .post-button,
+    .archive-post .widget_postmeta_widget{
+        padding:        0 1rem;
+    }
 }
 
 /**
