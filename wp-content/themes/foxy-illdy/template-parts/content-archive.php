@@ -24,6 +24,9 @@ add_action( 'widgets_init', 'load_postmeta_widget' );
         <a href="<?php the_permalink(); ?>" title="<?php _e( 'Read more', 'illdy' ); ?>" class="post-button">
             <i class="fa fa-chevron-circle-right"></i><?php _e( 'Read more', 'illdy' ); ?>
         </a>
-        <?php the_widget('postmeta_widget'); ?>
+
+        <?php
+            the_widget( 'postmeta_widget', array( 'format' => postmeta_widget::FORMAT_ARCHIVE_POST ) );
+        ?>
     </div><!--/.post-->
 </div><!--/.col-sm-4-->
