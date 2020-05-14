@@ -8,7 +8,6 @@ function my_theme_enqueue_styles() {
 /**
  * Custom Widget to show Blog Post Meta details in a sidebar.
  */
-// Register and load the widget
 function load_postmeta_widget(){
     register_widget( 'postmeta_widget' );
 }
@@ -16,7 +15,14 @@ add_action( 'widgets_init', 'load_postmeta_widget' );
 
 // Creating the widget
 class postmeta_widget extends WP_Widget{
-    function __construct() {
+    public const FORMAT_INHERIT        = 'inherit';
+    public const FORMAT_SINGLE_POST    = 'single';
+    public const FORMAT_ARCHIVE_POST   = 'archive';
+
+    private const ALL_FORMATS = [ self::FORMAT_INHERIT, self::FORMAT_SINGLE_POST, self::FORMAT_ARCHIVE_POST ];
+    private $formatType = self::FORMAT_INHERIT; // set default to inherit (base on is_single and is_archive)
+
+    function __construct(){
         parent::__construct(    'postmeta_widget',
                                 'Sidebar Post Meta Display',
                                 array( 'description' => 'Widget to show Post Metadata on any other location than post' )
@@ -24,13 +30,23 @@ class postmeta_widget extends WP_Widget{
     }
 
     /**
+     * Methods to verify the Post Type to allow distinction in display
+     * Allowing to overrule the is_ methods() for e.g. archive on All Blog Posts
+     */
+    public function isSinglePost(){ return $this->formatType == self::FORMAT_SINGLE_POST || ( $this->formatType === self::FORMAT_INHERIT && is_single() );}
+    public function isArchivePost(){ return $this->formatType == self::FORMAT_ARCHIVE_POST || ( $this->formatType === self::FORMAT_INHERIT && is_archive() ); }
+
+    /**
 	 * When widget is loaded on single post page, show post meta details
 	 */
     public function widget( $args, $instance ){
+        // Retrieve formatType from WP Widget Options, else continue with formatType set
+        if( isset( $instance[ 'format' ] ) && !empty( $instance[ 'format' ] ) ){ $this->formatType = $instance[ 'format' ]; }
+
         $categoriesList = get_the_category_list( esc_html__( ', ', 'illdy' ) );
         $tagsList = get_the_tag_list( '', ' | ', '' );
 
-		if( is_single() ){
+		if( $this->isSinglePost() ){
 			echo $args['before_widget'];
 			$output = '<div class="blog-post-meta">';
 			$output .= '<div class="post-meta-time"><i class="fa fa-calendar"></i>'. $this->getTimeText() .'</div>';
@@ -39,7 +55,7 @@ class postmeta_widget extends WP_Widget{
 			$output .= '<div class="post-meta-comments"><i class="fa fa-comment-o"></i>'. $this->getCommentsText() .'</div>';
 			$output .='</div><!--/.blog-post-meta-->';
 			echo $output . $args[ 'after_widget' ];
-		} else if( is_archive() ){
+		} else if( $this->isArchivePost() ){
             echo $args['before_widget'];
             $output = '<div class="blog-post-meta">';
             $output .= '<span class="post-meta-time"><i class="fa fa-calendar"></i>'. $this->getTimeText() .'</span>';
@@ -50,6 +66,26 @@ class postmeta_widget extends WP_Widget{
             $output .= '</div><!--/.blog-post-meta-->';
             echo $output . $args[ 'after_widget' ];
 		}
+    }
+
+    public function form( $instance ){
+        $format = ( isset( $instance[ $this->get_field_id( 'format' ) ] ) && !empty( $instance[ $this->get_field_id( 'format' ) ] ) )
+                    ? $instance[ $this->get_field_id( 'format' ) ]
+                    : self::FORMAT_SINGLE_POST;
+        echo '<p>
+                <label for="'. $this->get_field_id( 'format' ) .'">'. _e( 'Format:' ) .'</label>
+                <select id="'. $this->get_field_id( 'format' ) .'" name="'. $this->get_field_name( 'format' ) .'">';
+                foreach( self::ALL_FORMATS as $formatOption ){
+                    echo '<option value="'. $formatOption .'" '. ( $format == $formatOption ? "selected" : "" ) .'>'. $formatOption .'</option>';
+                }
+        echo    '</select>
+            </p>';
+    }
+
+    public function update( $new_instance, $old_instance ){
+        $instance = array();
+        $instance[ 'format' ] = ( !empty( $new_instance[ 'format' ] ) ) ? strip_tags( $new_instance[ 'format' ] ) : '';
+        return $new_instance;
     }
 
     public function getTimeText(){

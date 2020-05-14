@@ -165,7 +165,8 @@ ol li::before{
 /** Usage on Archive pages */
 .archive-post .widget_postmeta_widget{
     font-size:          80%;
-    padding:            0 30px; /* make sure to align with rest of archive-post content */
+    padding:            0 30px; /** make sure to align with rest of archive-post content */
+    margin-top:         2rem; /** add some space between 'read more' and widget */
 }
 
 /**
