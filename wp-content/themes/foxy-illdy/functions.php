@@ -1,9 +1,22 @@
 <?php
+/**
+ * Ensure the parent style styling is still loaded
+ */
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 function my_theme_enqueue_styles() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'bootstrap', get_stylesheet_directory_uri() . '/layout/css/bootstrap.min-modified.css', array(), '3.3.6-fixed', 'all' );
 }
+
+/**
+ * Disable the related blog posts to be shown in 'after content'
+ */
+set_theme_mod( 'illdy_enable_related_blog_posts', false );
+
+
+/**
+ * CUSTOM WIDGETS
+ */
 
 /**
  * Custom Widget to show Blog Post Meta details in a sidebar.
@@ -103,3 +116,5 @@ class postmeta_widget extends WP_Widget{
                 : __( 'Comments are off for this post', 'illdy' ) );
     }
 }
+
+?>

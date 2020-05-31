@@ -1,6 +1,10 @@
 # Ignore setup of local machine
 .idea/
 
+# Ignore Git
+.git/
+.github/
+
 # Ignore WP standard folders to prevent overrides after online updates
 wp-admin/*
 wp-includes/*

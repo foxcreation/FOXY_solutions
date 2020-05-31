@@ -13,24 +13,26 @@
 	--primary-color:	#f15d22;
 	--secondary-color:  #1e73be;
 	--gray-color:       #474647;
+	color:				var( --gray-color );
 }
 
 /**
  * General
  */
-h1{ font-size: 7rem; }
-h2{ font-size: 5rem; }
-h3{ font-size: 3rem; }
-h4{ font-size: 2.5rem; }
-h5{ font-size: 2rem; }
-h6{ font-size: 1.75rem; }
+h1{ font-size: 7rem; color: var( --gray-color ); }
+h2{ font-size: 5rem; color: var( --gray-color ); }
+h3{ font-size: 3rem; color: var( --gray-color ); }
+h4{ font-size: 2.5rem; color: var( --gray-color ); }
+h5{ font-size: 2rem; color: var( --gray-color ); }
+h6{ font-size: 1.75rem; color: var( --gray-color ); }
 
 a{
     color:              var( --primary-color );
     text-decoration:    none !important;
 }
 
-a:hover, a:focus{
+a:hover, a:focus, a:focus-within,
+ul li:hover a, ul li:focus a, ul li:focus-within a{
     color:              var( --secondary-color ) !important;
     font-weight:        bold;
 }
@@ -84,29 +86,38 @@ a:hover, a:focus{
 /**
  * Unordered List Styling
  */
-ul:not( .rmp-rating-widget__icons-list ) {
-	padding-left:       2em !important;
+.container ul:not( .rmp-rating-widget__icons-list ),
+.container ol{
+	margin:				0 !important;
+	padding:			0 !important;
 }
 
-ul:not( .rmp-rating-widget__icons-list ) li, ol:not( .rmp-rating-widget__icons-list ) li{
-	list-style-type:    none !important;
+.container ul:not( .rmp-rating-widget__icons-list ) li, 
+.container ol:not( .rmp-rating-widget__icons-list ) li{
+	list-style-type:	none !important;
+	position: 			relative !important;
+	width:				100% !important;
+	margin:				0 !important;
+	padding:			0 0 0 2.5rem !important;
+	line-height:		3rem !important;
 }
 
-ul:not( .rmp-rating-widget__icons-list ) li::before{
-	content: 			'\2601';
-	font-weight: 	    bold;
-	color: 				var( --primary-color );
-	display: 			inline-block;
-	width: 				1.5em;
-	margin-left:        -1.5em;
+.container ul:not( .rmp-rating-widget__icons-list ) li::before{
+	color: 				var( --primary-color ) !important;
+	content: 			'\2601' !important;
+
+	display: 			inline-block !important;
+	width: 				1.5em !important;
+	position:			absolute !important;
+	left:				0 !important;
+	
+	font-weight: 	    bold !important;
+	line-height:		3.2rem !important;
 }
 
-ul:not( .rmp-rating-widget__icons-list ) li ul li::before{
-	color:              var( --gray-color );
-}
-
-ul:not( .rmp-rating-widget__icons-list ) li ul{
-	padding-left:       1.5em !important;
+/* Child ul */
+.container ul:not( .rmp-rating-widget__icons-list ) li ul li::before{
+	color:              var( --gray-color ) !important;
 }
 
 /**
@@ -124,9 +135,10 @@ ol li::before{
 	content: 			counter( order-li )'.';
 	font-weight:        bold;
 	color: 				var( --primary-color );
-	display: 			inline-block;
 	width: 				1.5em;
-	margin-left: 	    -1.5em;
+	position:			absolute !important;
+	left:				0 !important;
+	line-height:		3.2rem !important;
 }
 
 /**
@@ -134,7 +146,13 @@ ol li::before{
  */
 .widget{
 	font-size:          90%;
+	margin-bottom:		5rem;
 }
+
+.widget .widget-title{
+	margin-bottom:		0;
+}
+
 .widget .widget-recent-post .recent-post-title,
 .widget.widget_recent_entries ul li a{
 	display:            initial;
@@ -184,11 +202,17 @@ ol li::before{
 /**
  * Footer styling
  */
-footer li::before, footer ol::before{
-	margin-left:        -1.7em !important;
-	color:              white !important;
+/* Reset all text in footer, headers, list item (icons) to white */
+#footer,
+#footer h1, #footer h2, #footer h3, #footer h4, #footer h5, #footer h6,
+#footer ul li, #footer span, #footer p, /* list text */
+#footer ul li::before, #footer ol li::before, /* list item icons */
+#footer a:hover, #footer a:focus, #footer a:focus-within, /* link hovers */
+#footer ul li:hover a, #footer ul li:focus a, #footer ul li:focus-within a /* link hovers */{
+	color:				white !important;
 }
 
-footer .widget.widget_recent_entries ul li{
-	margin-bottom:      initial;
+/* Correct 'left' due to odd behaviour on category (3) count value; then the absolute is 'off' */
+#footer .widget_categories ul li::before{
+	left:				-1rem !important;
 }
