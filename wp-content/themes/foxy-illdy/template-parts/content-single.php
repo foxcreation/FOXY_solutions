@@ -28,7 +28,7 @@ $jumbotron_single_image  = get_theme_mod( 'illdy_jumbotron_enable_featured_image
 		?>
 	</div><!--/.blog-post-entry.markup-format-->
 	<?php
-		// do_action( 'illdy_single_after_content' ); 
+		do_action( 'illdy_single_after_content' ); 
 	?>
 	<?php
 	if ( comments_open() || get_comments_number() ) :
