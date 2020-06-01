@@ -149,7 +149,8 @@ ol li::before{
 	margin-bottom:		5rem;
 }
 
-.widget .widget-title{
+.widget .widget-title,
+.widget .lwptoc_header{
 	margin-bottom:		0;
 }
 
@@ -173,10 +174,7 @@ ol li::before{
 	padding:			0 !important;
 }
 
-.lwptoc_header{
-	font-family: 		"Poppins" !important;
-	font-size: 			2rem !important;
-    color: 				var( --gray-color ) !important;
+.lwptoc_header .lwptoc_title{
     margin: 			0 !important;
     padding: 			0 !important;
 }
