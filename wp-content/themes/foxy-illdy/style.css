@@ -238,18 +238,6 @@ ol li::before{
 }
 
 /**
- * Archive blog-post layout
- */
-@media ( max-width: 600px ){
-    #latest-news .section-content .post .post-title,
-    #latest-news .section-content .post .post-entry,
-    #latest-news .section-content .post .post-button,
-    .archive-post .widget_postmeta_widget{
-        padding:        0 1rem;
-    }
-}
-
-/**
  * Footer styling
  */
 /* Reset all text in footer, headers, list item (icons) to white */
@@ -265,4 +253,30 @@ ol li::before{
 /* Correct 'left' due to odd behaviour on category (3) count value; then the absolute is 'off' */
 #footer .widget_categories ul li::before{
 	left:				-1rem !important;
+}
+
+/**
+ * MOBILE STYLING
+ */
+
+@media ( max-width: 600px ){
+	/* Archive blog-post layout */
+    #latest-news .section-content .post .post-title,
+    #latest-news .section-content .post .post-entry,
+    #latest-news .section-content .post .post-button,
+    .archive-post .widget_postmeta_widget{
+        padding:        0 1rem;
+    }
+
+    /* Headings */
+    h2{ font-size: 4rem; 	margin: 4rem 0 0 0 !important; 		line-height: 5rem !important; 	}
+	h3{ font-size: 2.5rem; 	margin: 2.5rem 0 0 0 !important;	line-height: 3.5rem !important;	}
+	h4{ font-size: 2rem; 	margin: 2rem 0 0 0 !important;		line-height: 3rem !important; 	}
+	h5{ font-size: 1.75rem; margin: 1.75rem 0 0 0 !important;	line-height: 2.7rem !important; }
+	h6{ font-size: 1.5rem; 	margin: 1.5rem 0 0 0 !important;	line-height: 2.5rem !important; }
+	
+	p{ margin: 2rem 0 !important; }
+	h2 ~ p, h3 ~ p, h4 ~ p, h5 ~ p, h6 ~ p{
+		margin-top:		0 !important;
+	}
 }
