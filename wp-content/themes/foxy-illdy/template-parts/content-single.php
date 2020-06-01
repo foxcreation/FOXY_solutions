@@ -7,7 +7,6 @@
  */
 
 $jumbotron_single_image  = get_theme_mod( 'illdy_jumbotron_enable_featured_image', true );
-
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'blog-post' ); ?>>
 	<?php if ( has_post_thumbnail() && true != $jumbotron_single_image ) { ?>

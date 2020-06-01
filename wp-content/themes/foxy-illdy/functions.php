@@ -6,6 +6,10 @@ add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 function my_theme_enqueue_styles() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
     wp_enqueue_style( 'bootstrap', get_stylesheet_directory_uri() . '/layout/css/bootstrap.min-modified.css', array(), '3.3.6-fixed', 'all' );
+
+    if( class_exists( 'lwptocAutoloader' ) ){
+        wp_enqueue_script( 'toc-highlight', get_stylesheet_directory_uri() . '/layout/js/tableOfContentActiveScroll.js', array( 'jquery' ), '1.0', true );
+    }
 }
 
 /**
