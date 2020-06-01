@@ -60,6 +60,31 @@ ul li:hover a, ul li:focus a, ul li:focus-within a{
 }
 
 /**
+ * Responsive menu styling (only on mobile)
+ */
+.open-responsive-menu:focus .fa{
+	color:				white !important;
+}
+
+.responsive-menu ul li{
+	padding:			0 1rem;
+}
+
+.responsive-menu ul li a{
+	padding:			.5rem;
+	text-align:			left;
+}
+
+.responsive-menu li a:focus{
+	background:			var( --primary-color ) !important;
+	color:				white !important;
+}
+
+.responsive-menu a.activeScroll{
+	font-weight:		700 !important;
+}
+
+/**
  * Markup - post format
  */
 .markup-format a{
