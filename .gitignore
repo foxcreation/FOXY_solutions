@@ -13,7 +13,7 @@ wp-content/*
 # Except the overrides we're interested in
 !wp-content/themes
 wp-content/themes/*
-!wp-content/themes/*illdy
+!wp-content/themes/foxy_illdy
 
 # Ignore WP standard files
 /wp-*.php
