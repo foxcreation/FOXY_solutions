@@ -17,6 +17,11 @@ function my_theme_enqueue_styles() {
  */
 set_theme_mod( 'illdy_enable_related_blog_posts', false );
 
+/**
+ * Update Lucky WP Table Of Content plugin to set <h5> as title, instead of <span><b>
+ */
+add_filter( 'lwptoc_title_tag', function(){ return 'h5'; } );
+
 
 /**
  * CUSTOM WIDGETS
