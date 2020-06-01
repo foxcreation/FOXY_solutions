@@ -26,24 +26,26 @@ $( document ).ready( function(){
 			let scrollPos = $(window).scrollTop();
 			
 			// Scrolling down, check next heading - as long as this is not the last
-			if( scrollPos > lastScrollPos && nextHeading && scrollPos >= nextHeading.offset ){
-				// shift all objects
-				prevHeading = currHeading;
-				currHeading = nextHeading;
+			if( scrollPos > lastScrollPos && nextHeading ){
+				while( scrollPos >= nextHeading.offset ){
+					// shift all objects
+					prevHeading = currHeading;
+					currHeading = nextHeading;
 
-				// set next heading, when current is not the last one
-				let nextHeadingIndex = ( !currHeading || currHeading.index == headerArray.length - 1 ) ? undefined : currHeading.index + 1;
-				nextHeading = ( nextHeadingIndex ) ? getHeadingObj( nextHeadingIndex ) : undefined;
-
-			} else if( scrollPos < lastScrollPos && currHeading && scrollPos <= currHeading.offset ){
-				// Scrolling up, check previous heading - as long as the current is not the first;
-				nextHeading = currHeading;
-				currHeading = prevHeading;
-				
-				// set next heading, when current is not the last one
-				let prevHeadingIndex = ( !currHeading || currHeading.index == 0 ) ? undefined : currHeading.index - 1;
-				prevHeading = ( prevHeadingIndex ) ? getHeadingObj( prevHeadingIndex ) : undefined;
-			
+					// set next heading, when current is not the last one
+					let nextHeadingIndex = ( !currHeading || currHeading.index == headerArray.length - 1 ) ? undefined : currHeading.index + 1;
+					nextHeading = ( nextHeadingIndex ) ? getHeadingObj( nextHeadingIndex ) : undefined;
+				}
+			} else if( scrollPos < lastScrollPos && currHeading ){
+				while( scrollPos <= currHeading.offset ){
+					// Scrolling up, check previous heading - as long as the current is not the first;
+					nextHeading = currHeading;
+					currHeading = prevHeading;
+					
+					// set next heading, when current is not the last one
+					let prevHeadingIndex = ( !currHeading || currHeading.index == 0 ) ? undefined : currHeading.index - 1;
+					prevHeading = ( prevHeadingIndex ) ? getHeadingObj( prevHeadingIndex ) : undefined;
+				}
 			}
 			
 			// update select class
