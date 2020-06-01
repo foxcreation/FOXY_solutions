@@ -163,6 +163,33 @@ ol li::before{
 }
 
 /**
+ * Table of content Widget
+ */
+.widget_lpwtoc_widget{
+	width:				auto !important;
+}
+
+.lwptoc_i{
+	padding:			0 !important;
+}
+
+.lwptoc_header{
+	font-family: 		"Poppins" !important;
+	font-size: 			2rem !important;
+    color: 				var( --gray-color ) !important;
+    margin: 			0 !important;
+    padding: 			0 !important;
+}
+
+.lwptoc_item a.activeScroll{
+	font-weight:		bold;
+}
+
+.lwptoc_item a span{
+	color:				var( --primary-color ) !important;
+}
+
+/**
  * Blog Post Meta Custom widget styling
  */
 .blog-post-meta div .fa {
