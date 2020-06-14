@@ -91,6 +91,10 @@ ul li:hover a, ul li:focus a, ul li:focus-within a{
 	color: 		        var( --primary-color );
 }
 
+.markup-format p{
+	margin:				2rem 0; /* Make margin responsive, instead of 30px 0 */
+}
+
 .markup-format p:first-child {
     margin-top:         .2em;
 }
@@ -106,6 +110,12 @@ ul li:hover a, ul li:focus a, ul li:focus-within a{
 
 .text-highlight strong{
     color:              var( --primary-color );
+}
+
+/** Prevent white-space between two text-highlight components */
+.text-highlight + .text-highlight{
+	margin-top:			-2rem; /* Move component directly after previous text-highlight */
+	padding-top:		2rem; /* Include some 'inner-orange-bar' whitespace */
 }
 
 /**
