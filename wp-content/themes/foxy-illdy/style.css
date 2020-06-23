@@ -125,14 +125,14 @@ ul li:hover a, ul li:focus a, ul li:focus-within a{
 /**
  * Unordered List Styling
  */
-.container ul:not( .rmp-rating-widget__icons-list ),
+.container ul:not( .rmp-rating-widget__icons-list, .blocks-gallery-grid ),
 .container ol{
 	margin:				0 !important;
 	padding:			0 !important;
 }
 
-.container ul:not( .rmp-rating-widget__icons-list ) li, 
-.container ol:not( .rmp-rating-widget__icons-list ) li{
+.container ul:not( .rmp-rating-widget__icons-list, .blocks-gallery-grid ) li,
+.container ol:not( .rmp-rating-widget__icons-list, .blocks-gallery-grid ) li{
 	list-style-type:	none !important;
 	position: 			relative !important;
 	width:				100% !important;
@@ -141,7 +141,7 @@ ul li:hover a, ul li:focus a, ul li:focus-within a{
 	line-height:		3rem !important;
 }
 
-.container ul:not( .rmp-rating-widget__icons-list ) li::before{
+.container ul:not( .rmp-rating-widget__icons-list, .blocks-gallery-grid ) li::before{
 	color: 				var( --primary-color ) !important;
 	content: 			'\2601' !important;
 
@@ -155,7 +155,7 @@ ul li:hover a, ul li:focus a, ul li:focus-within a{
 }
 
 /* Child ul */
-.container ul:not( .rmp-rating-widget__icons-list ) li ul li::before{
+.container ul:not( .rmp-rating-widget__icons-list, .blocks-gallery-grid ) li ul li::before{
 	color:              var( --gray-color ) !important;
 }
 
