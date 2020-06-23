@@ -54,6 +54,10 @@ ul li:hover a, ul li:focus a, ul li:focus-within a{
     white-space:        nowrap;
 }
 
+#header .bottom-header h1{
+    text-shadow:        0.25rem 0.25rem 1.5rem var( --gray-color );
+}
+
 #contact_submit_button{
 	background:         #f15d22;
 	color:		        white;
