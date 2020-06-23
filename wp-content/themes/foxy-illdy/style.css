@@ -123,6 +123,21 @@ ul li:hover a, ul li:focus a, ul li:focus-within a{
 }
 
 /**
+ * Gallery and figures
+ */
+figcaption::before{    content:  '>'; }
+figcaption::after{     content:  '<'; }
+figcaption::before, figcaption::after{
+    margin: 0 1rem;
+    color: var( --primary-color );
+}
+
+.wp-block-image figcaption{
+    text-align:         center;
+    font-size:          80%;
+}
+
+/**
  * Unordered List Styling
  */
 .container ul:not( .rmp-rating-widget__icons-list, .blocks-gallery-grid ),
