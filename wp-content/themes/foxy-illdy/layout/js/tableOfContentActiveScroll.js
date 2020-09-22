@@ -58,7 +58,7 @@ $( document ).ready( function(){
 
 					// set next heading, when current is not the last one
 					let nextHeadingIndex = ( !currHeading || currHeading.index == headerArray.length - 1 ) ? undefined : currHeading.index + 1;
-					nextHeading = ( nextHeadingIndex ) ? getHeadingObj( nextHeadingIndex ) : undefined;
+					nextHeading = ( Number.isInteger( nextHeadingIndex ) ) ? getHeadingObj( nextHeadingIndex ) : undefined;
 				}
 			} else if( scrollPos < lastScrollPos ){
 				while( currHeading && scrollPos <= currHeading.offset ){
@@ -68,7 +68,7 @@ $( document ).ready( function(){
 					
 					// set next heading, when current is not the last one
 					let prevHeadingIndex = ( !currHeading || currHeading.index == 0 ) ? undefined : currHeading.index - 1;
-					prevHeading = ( prevHeadingIndex ) ? getHeadingObj( prevHeadingIndex ) : undefined;
+					prevHeading = ( Number.isInteger( prevHeadingIndex ) ) ? getHeadingObj( prevHeadingIndex ) : undefined;
 				}
 			}
 			
